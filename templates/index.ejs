@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFT.io</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+</head>
+<body class="bg-gradient-to-r from-slate-950 to-indigo-950">
+    <%- include('header'); -%>
+
+    <div class="grid grid-cols-2 mt-20">
+        <div class="mx-auto ">
+            <p class="text-indigo-200 text-5xl font-bold mt-10">The leading<br>
+                NFT Marketplace<br>
+                on blockchain Aptos</p>
+            <p class="text-indigo-300 pt-4">Explore the most outstanding NTFs in all topics of life.<br>Buy NFTs to earn rewards.</p>
+            <br>
+            <a href="#NFTs" class="ring-1 ring-offset-1 ring-indigo-500 text-indigo-200 rounded-lg font-semibold px-3 py-2 my-10 hover:text-indigo-950 hover:bg-indigo-300 " id="connectwallet" >Explore Now</a>
+        </div>
+        
+        
+            <div class="flex">
+                <img class=" -z-10 my-auto h-60 w-52 ring-4 ring-indigo-800 ring-offset-2 ring-offset-indigo-950 rounded-2xl drop-shadow-2xl shadow-2xl shadow-indigo-200 " src="https://gifsec.com/wp-content/uploads/2022/12/nft-gif-19.gif">
+                <img class="z-50 -ml-12 h-80 w-56 ring-4 ring-indigo-800 ring-offset-2 ring-offset-indigo-950 rounded-2xl drop-shadow-2xl shadow-2xl shadow-indigo-200 " src="https://media.tenor.com/ex0ssYC5xdEAAAAd/metakongz-nft.gif">
+                <img class="-z-10 my-auto -ml-12 h-60 w-52 ring-4 ring-indigo-800 ring-offset-2 ring-offset-indigo-950  rounded-2xl drop-shadow-2xl shadow-2xl shadow-indigo-200 " src="https://nftdroppers.io/wp-content/uploads/2022/08/Meta-Ape-Gang-.gif">
+            </div>
+
+        
+        
+       
+    </div>
+
+
+
+    <p class="text-indigo-200 text-3xl font-bold ml-9 mt-32">All collections</p>
+
+    <h1 class="text-indigo-200 text-lg font-semibold ml-8 mt-5 mb-5" id="totalnft">Total NFT's : </h1>
+
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 p-6 mb-20" id="NFTs">
+        <!-- <div class="w-full border border-indigo-500 overflow-hidden bg-gradient-to-r from-indigo-950 to-indigo-900 rounded-lg hover:scale-105">
+            <img class="object-fill w-full h-72" src="https://imageio.forbes.com/specials-images/imageserve/6170e01f8d7639b95a7f2eeb/Sotheby-s-NFT-Natively-Digital-1-2-sale-Bored-Ape-Yacht-Club--8817-by-Yuga-Labs/0x0.png?format=png&width=960" alt="Not found">
+            <p class="text-indigo-200 text-2xl font-semibold text-center py-3">Monkey</p>
+            <p class="text-indigo-200 text-center font-semibold pb-3">100 APT</p>
+        </div> -->
+
+        
+    </div>
+
+    <%- include('footer'); -%>
+    
+
+    <script src="./apis/listed_nfts.js"></script>
+    <script src="./apis/patrawallet.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
+    <script>
+
+        let nftdiv = document.getElementById("NFTs");
+        let totalnft = document.getElementById("totalnft");
+
+        
+
+        async function FetchListedNFT(){
+
+            let nftcount = 0;
+            let nft =await startFetchListedNFT();
+            // console.log(nft);
+            
+            nftlist = "";
+
+            nft["current_table_items"].forEach(element => {
+                
+                if(element["decoded_value"]!=null){
+                    nftcount++;
+                    nftlist += `
+                    <a data-aos="zoom-in" href="/details?tokenname=${element["decoded_value"]["token_name"]}&tokendesc=${element["decoded_value"]["token_desc"]}&tokenurl=${element["decoded_value"]["token_url"]}&price=${parseInt(element["decoded_value"]["price"])/(10**8)}&owner=${element["decoded_value"]["owner_address"]}"  class="">
+                    <div class=" duration-75  drop-shadow-xl shadow-md shadow-indigo-700  w-full border border-indigo-500 overflow-hidden  bg-gradient-to-r from-indigo-950 to-indigo-900 rounded-lg hover:scale-105">
+                        <img class="object-fill w-full h-72" src="${element["decoded_value"]["token_url"]}" alt="Not found">
+                        <p class="text-indigo-200 text-2xl font-semibold text-center py-3">${element["decoded_value"]["token_name"]}</p>
+                        <p class="text-indigo-200 text-center font-semibold pb-3">${parseInt(element["decoded_value"]["price"])/(10**8)} APT</p>
+                    </div>
+                    </a>
+                    `;
+                }
+            });
+
+            
+            nftdiv.innerHTML = nftlist;
+            totalnft.innerText = `Total NFT's : ${nftcount}`;
+
+        }
+
+        
+        async function checkAndFeatch(){
+            let iscon = await window.aptos.isConnected();
+            if(iscon){
+                FetchListedNFT();
+            }else{
+                
+            }
+
+        }
+
+        checkAndFeatch();
+        
+        
+
+
+        
+    </script>
+</body>
+</html>

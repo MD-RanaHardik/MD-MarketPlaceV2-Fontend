@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-slate-950 to-indigo-950">
+    <%- include('header'); -%>  
+    
+    <div class="grid grid-cols-2">
+       
+        <img class="h-1/2 my-14 mx-auto" src="<%= tokenurl %>" alt="Not found" >
+        
+        <div class="pt-14">
+            <p class="text-4xl font-bold text-indigo-200"><%= tokenname %></p>
+            <p class="font-bold text-indigo-200 pt-8">Description:</p>
+            <p class="text-indigo-300 pt-4 text-justify mr-16"><%= tokendesc %></p>
+            <p class="font-bold text-indigo-200 pt-8">Owner:</p>
+            <p class="text-indigo-300 pt-4 text-justify mr-16" id="owneradd"><%= owner %></p>
+            <p class="font-bold text-indigo-200 pt-8">Price:</p>
+            <p class="text-indigo-300 pt-4 text-justify mr-16"><%= price %> APT</p>
+
+            <!-- <form action="/buynft" method="post">
+                <input type="hidden" name="tokenname" value="<%= tokenname %>">
+                <input id="buybtn" class="ring-1 ring-offset-1 ring-indigo-500 text-indigo-200 rounded-lg font-semibold px-8 py-2 my-8 mr-8 hover:text-indigo-950 hover:bg-indigo-300" type="submit" value="Buy Now" >
+            </form> -->
+
+            <input onclick="BuyNFT('<%= tokenname %>');" id="buybtn" class="ring-1 ring-offset-1 ring-indigo-500 text-indigo-200 rounded-lg font-semibold px-8 py-2 my-8 mr-8 hover:text-indigo-950 hover:bg-indigo-300" type="submit" value="Buy Now" >
+            
+        </div>   
+  
+    </div>
+
+
+    <%- include('footer'); -%>
+ 
+    <script src="./apis/patrawallet.js"></script>
+    <script>
+
+        let buybtn = document.getElementById("buybtn");
+        let owneradd = document.getElementById("owneradd");
+        
+        async function stopBuying(){
+            let currunt_account = await window.aptos.account();
+
+            if(owneradd.textContent == currunt_account.address){
+                buybtn.classList.add("invisible");
+            }
+        }
+
+        stopBuying();
+    </script>
+</body>
+</html>
