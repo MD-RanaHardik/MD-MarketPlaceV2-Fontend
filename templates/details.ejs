@@ -10,25 +10,25 @@
 <body class="bg-gradient-to-r from-slate-950 to-indigo-950">
     <%- include('header'); -%>  
     
-    <div class="grid grid-cols-2">
+    <div class="grid grid-cols-2 sm:grid-cols-1">
        
-        <img class="h-1/2 my-14 mx-auto" src="<%= tokenurl %>" alt="Not found" >
+        <img class="h-1/2 my-14 mx-auto sm:my-4 sm:h-60" src="<%= tokenurl %>" alt="Not found" >
         
-        <div class="pt-14">
-            <p class="text-4xl font-bold text-indigo-200"><%= tokenname %></p>
-            <p class="font-bold text-indigo-200 pt-8">Description:</p>
-            <p class="text-indigo-300 pt-4 text-justify mr-16"><%= tokendesc %></p>
-            <p class="font-bold text-indigo-200 pt-8">Owner:</p>
-            <p class="text-indigo-300 pt-4 text-justify mr-16" id="owneradd"><%= owner %></p>
-            <p class="font-bold text-indigo-200 pt-8">Price:</p>
-            <p class="text-indigo-300 pt-4 text-justify mr-16"><%= price %> APT</p>
+        <div class="pt-14 sm:pt-4">
+            <p class="text-4xl font-bold text-indigo-200 sm:text-xl sm:ml-5"><%= tokenname %></p>
+            <p class="font-bold text-indigo-200 pt-8 sm:text-md sm:ml-5">Description:</p>
+            <p class="text-indigo-300 pt-4 text-justify mr-16 sm:text-sm sm:ml-5"><%= tokendesc %></p>
+            <p class="font-bold text-indigo-200 pt-8 sm:text-md sm:ml-5 ">Owner:</p>
+            <p class="text-indigo-300 pt-4 text-justify mr-16 sm:text-sm sm:ml-5 sm:break-words" id="owneradd"><%= owner %></p>
+            <p class="font-bold text-indigo-200 pt-8 sm:text-md sm:ml-5">Price:</p>
+            <p class="text-indigo-300 pt-4 text-justify mr-16 sm:text-sm sm:ml-5"><%= price %> APT</p>
 
             <!-- <form action="/buynft" method="post">
                 <input type="hidden" name="tokenname" value="<%= tokenname %>">
                 <input id="buybtn" class="ring-1 ring-offset-1 ring-indigo-500 text-indigo-200 rounded-lg font-semibold px-8 py-2 my-8 mr-8 hover:text-indigo-950 hover:bg-indigo-300" type="submit" value="Buy Now" >
             </form> -->
 
-            <input onclick="BuyNFT('<%= tokenname %>');" id="buybtn" class="ring-1 ring-offset-1 ring-indigo-500 text-indigo-200 rounded-lg font-semibold px-8 py-2 my-8 mr-8 hover:text-indigo-950 hover:bg-indigo-300" type="submit" value="Buy Now" >
+            <input onclick="BuyNFT('<%= tokenname %>');" id="buybtn" class="ring-1 ring-offset-1 ring-indigo-500 text-indigo-200 rounded-lg font-semibold px-8 py-2 my-8 mr-8 sm:text-sm sm:ml-5 hover:text-indigo-950 hover:bg-indigo-300" type="submit" value="Buy Now" >
             
         </div>   
   

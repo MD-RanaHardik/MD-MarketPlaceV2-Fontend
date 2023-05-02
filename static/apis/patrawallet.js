@@ -1,4 +1,6 @@
 let conbtn = document.getElementById("connectwallet");
+let connectwalletmenu = document.getElementById("connectwallet-menu");
+
 
 const contract_address = "0xacf4a0ac740b9530686f91e2348d9fd7168290f4cfceb85f1838fcd121685414";
 
@@ -19,6 +21,39 @@ async function checkConnection()
 }
 
 checkConnection();
+
+async function checkConnectionmenu()
+{
+    let iscon = await window.aptos.isConnected();
+    if(iscon){
+        connectwalletmenu.value= "Disconnect wallet"
+    }else{
+
+        if(window.location.pathname != "/index"){
+            window.location.replace("/index");
+        }
+
+        connectwalletmenu.value= "Connect wallet"
+
+    }
+}
+
+connectwalletmenu.addEventListener("click",async ()=>{
+    
+  let iscon = await window.aptos.isConnected();
+  if(iscon){
+     let data = await window.aptos.disconnect();
+     location.reload();
+
+  // await CreateNFT("AdMonkey","For sale","https://openseauserdata.com/files/9dc1a378f914acfbe0dbb55f5bf122e9.png");
+  
+  }else{
+      let data = await window.aptos.connect();
+      location.reload();
+     
+  }
+
+});
 
 conbtn.addEventListener("click",async ()=>{
     

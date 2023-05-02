@@ -7,26 +7,28 @@
     <title>NFT.io</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 
 </head>
 <body class="bg-gradient-to-r from-slate-950 to-indigo-950">
     <%- include('header'); -%>
 
-    <div class="grid grid-cols-2 mt-20">
+    <div class="grid grid-cols-2 sm:grid-cols-1 mt-20 sm:mt-5">
         <div class="mx-auto ">
-            <p class="text-indigo-200 text-5xl font-bold mt-10">The leading<br>
+            <p class="text-indigo-200 text-5xl font-bold mt-10 sm:text-3xl sm:mt-5 sm:ml-5">The leading<br>
                 NFT Marketplace<br>
                 on blockchain Aptos</p>
-            <p class="text-indigo-300 pt-4">Explore the most outstanding NTFs in all topics of life.<br>Buy NFTs to earn rewards.</p>
+            <p class="text-indigo-300 pt-4 sm:ml-5 sm:mr-5 sm:text-sm">Explore the most outstanding NTFs in all topics of life.<br class="sm:hidden">Buy NFTs to earn rewards.</p>
             <br>
-            <a href="#NFTs" class="ring-1 ring-offset-1 ring-indigo-500 text-indigo-200 rounded-lg font-semibold px-3 py-2 my-10 hover:text-indigo-950 hover:bg-indigo-300 " id="connectwallet" >Explore Now</a>
+            <a href="#NFTs" class="ring-1 ring-offset-1 ring-indigo-500 text-indigo-200 rounded-lg font-semibold px-3 py-2 my-10 sm:px-2 sm:ml-5 sm:text-xs hover:text-indigo-950 hover:bg-indigo-300 " id="connectwallet" >Explore Now</a>
         </div>
         
         
-            <div class="flex">
-                <img class=" -z-10 my-auto h-60 w-52 ring-4 ring-indigo-800 ring-offset-2 ring-offset-indigo-950 rounded-2xl drop-shadow-2xl shadow-2xl shadow-indigo-200 " src="https://gifsec.com/wp-content/uploads/2022/12/nft-gif-19.gif">
-                <img class="z-50 -ml-12 h-80 w-56 ring-4 ring-indigo-800 ring-offset-2 ring-offset-indigo-950 rounded-2xl drop-shadow-2xl shadow-2xl shadow-indigo-200 " src="https://media.tenor.com/ex0ssYC5xdEAAAAd/metakongz-nft.gif">
-                <img class="-z-10 my-auto -ml-12 h-60 w-52 ring-4 ring-indigo-800 ring-offset-2 ring-offset-indigo-950  rounded-2xl drop-shadow-2xl shadow-2xl shadow-indigo-200 " src="https://nftdroppers.io/wp-content/uploads/2022/08/Meta-Ape-Gang-.gif">
+            <div class="flex sm:justify-center sm:mt-20">
+                <img class=" -z-10 my-auto h-60 w-52 sm:h-24 sm:w-24 sm:mr-7 ring-4  ring-indigo-800 ring-offset-2 ring-offset-indigo-950 rounded-2xl drop-shadow-2xl shadow-2xl shadow-indigo-200 " src="https://gifsec.com/wp-content/uploads/2022/12/nft-gif-19.gif">
+                <img class="z-20 -ml-12 h-80 w-56 sm:h-36 sm:w-32 ring-4 ring-indigo-800 ring-offset-2 ring-offset-indigo-950 rounded-2xl drop-shadow-2xl shadow-2xl shadow-indigo-200 " src="https://media.tenor.com/ex0ssYC5xdEAAAAd/metakongz-nft.gif">
+                <img class="-z-10 my-auto -ml-12 h-60 w-52  sm:h-24 sm:w-24 sm:-ml-4 ring-4 ring-indigo-800 ring-offset-2 ring-offset-indigo-950  rounded-2xl drop-shadow-2xl shadow-2xl shadow-indigo-200 " src="https://nftdroppers.io/wp-content/uploads/2022/08/Meta-Ape-Gang-.gif">
             </div>
 
         
@@ -36,11 +38,11 @@
 
 
 
-    <p class="text-indigo-200 text-3xl font-bold ml-9 mt-32">All collections</p>
+    <p class="text-indigo-200 text-3xl font-bold ml-9 mt-32 sm:text-2xl">All collections</p>
 
-    <h1 class="text-indigo-200 text-lg font-semibold ml-8 mt-5 mb-5" id="totalnft">Total NFT's : </h1>
+    <h1 class="text-indigo-200 text-lg font-semibold ml-8 mt-5 mb-5 sm:text-sm" id="totalnft">Total NFT's : </h1>
 
-    <div class="grid grid-cols-1 gap-8 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 p-6 mb-20" id="NFTs">
+    <div class="grid grid-cols-4 gap-8 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 p-6 mb-20" id="NFTs">
         <!-- <div class="w-full border border-indigo-500 overflow-hidden bg-gradient-to-r from-indigo-950 to-indigo-900 rounded-lg hover:scale-105">
             <img class="object-fill w-full h-72" src="https://imageio.forbes.com/specials-images/imageserve/6170e01f8d7639b95a7f2eeb/Sotheby-s-NFT-Natively-Digital-1-2-sale-Bored-Ape-Yacht-Club--8817-by-Yuga-Labs/0x0.png?format=png&width=960" alt="Not found">
             <p class="text-indigo-200 text-2xl font-semibold text-center py-3">Monkey</p>

@@ -1,17 +1,77 @@
+<script>
+    
+    tailwind.config = {
+        theme: {
+            screens: {
+            '2xl': {'max': '1535px'},
+            // => @media (max-width: 1535px) { ... }
+
+            'xl': {'max': '1279px'},
+            // => @media (max-width: 1279px) { ... }
+
+            'lg': {'max': '1023px'},
+            // => @media (max-width: 1023px) { ... }
+
+            'md': {'max': '767px'},
+            // => @media (max-width: 767px) { ... }
+
+            'sm': {'min':'300px','max': '639px'},
+            // => @media (max-width: 639px) { ... }
+            }
+}
+}   
+
+
+</script>
 <nav class="bg-slate-900 w-full h-20 flex justify-between sticky">
     <div class="flex my-auto">   
-        <img src="./images/logo.png" class="h-10 w-14 ml-5" alt="" srcset="">
-        <h3 class="text-indigo-200 text-3xl font-bold ml-3 mr-5">NFT.io</h3>
-        <a href="/index" class="text-indigo-200 font-semibold px-2 my-auto hover:text-indigo-500">Home</a>
-        <a href="/createnft" class="text-indigo-200 font-semibold px-2 my-auto hover:text-indigo-500">Create NFT</a>
-        <a href="/myitems" class="text-indigo-200 font-semibold px-2 my-auto hover:text-indigo-500">My items</a> 
+        <img src="./images/logo.png" class="h-10 w-14 ml-5 sm:h-8 sm:w-8 " alt="" srcset="">
+        <h3 class="text-indigo-200 text-3xl font-bold ml-3 mr-5 sm:text-2xl">NFT.io</h3>
+        <a href="/index" class="text-indigo-200 font-semibold px-2 my-auto hover:text-indigo-500 sm:hidden">Home</a>
+        <a href="/createnft" class="text-indigo-200 font-semibold px-2 my-auto hover:text-indigo-500 sm:hidden">Create NFT</a>
+        <a href="/myitems" class="text-indigo-200 font-semibold px-2 my-auto hover:text-indigo-500 sm:hidden">My items</a> 
     </div>
     
-    
-    <input class="ring-1 ring-offset-1 ring-indigo-500 text-indigo-200 rounded-lg font-semibold px-3 my-5 mr-8 hover:text-indigo-950 hover:bg-indigo-300" id="connectwallet" type="button" value="Connect wallet">
+     <button id="menuopen"><i class="fa fa-bars sm:block hidden text-indigo-200 sm:mr-5" style="font-size:24px"></i></button>
+    <input class="ring-1 ring-offset-1 ring-indigo-500 text-indigo-200 rounded-lg font-semibold px-3 my-5 mr-8 sm:px-2 sm:text-xs sm:hidden  hover:text-indigo-950 hover:bg-indigo-300" id="connectwallet" type="button" value="Connect wallet">
+
+   
+
 </nav>
 
+<div class="h-full w-full backdrop-blur-lg absolute top-0 z-50 grid grid-cols-1 hidden" id="menualert">
+    <div class="w-full h-72 bg-slate-900  rounded-t-2xl self-end">
+        <div class="w-full mb-14">
+            <button class="text-indigo-200 float-right mr-5 mt-5" id="menuclose">X</button>
+        </div>
+       
+        <div>
+            <a href="/index" class="ring-1 ring-offset-1 ring-indigo-500 rounded-lg w-1/2 mx-auto my-3 text-indigo-200 font-semibold px-3 py-2 hover:text-indigo-500  sm:block sm:text-center">Home</a>
+            <a href="/createnft" class="ring-1 ring-offset-1 ring-indigo-500 rounded-lg w-1/2 mx-auto my-3 text-indigo-200 font-semibold px-3 py-2  hover:text-indigo-500 sm:block sm:text-center">Create NFT</a>
+            <a href="/myitems" class="ring-1 ring-offset-1 ring-indigo-500 rounded-lg w-1/2 mx-auto my-3 text-indigo-200 font-semibold px-3 py-2  hover:text-indigo-500 sm:block sm:text-center">My items</a> 
+            <input class="ring-1 ring-offset-1 ring-indigo-500 rounded-lg w-1/2 mx-auto my-3 text-indigo-200 font-semibold px-3 py-2  hover:text-indigo-500 sm:block sm:text-center" id="connectwallet-menu" type="button" value="Connect wallet">
+        </div>
+        
+    </div>
+</div>
+
+
 <script src="https://unpkg.com/aptos@latest/dist/index.global.js" ></script>
+<script>
+    let menualert = document.getElementById('menualert');
+    let menuclose = document.getElementById('menuclose');
+    let menuopen = document.getElementById('menuopen');
+    
+
+    menuclose.addEventListener("click",()=>{
+        menualert.classList.add("hidden")
+    })
+
+    menuopen.addEventListener("click",()=>{
+        checkConnectionmenu();
+        menualert.classList.remove("hidden")
+    })
+</script>
 
 
  
