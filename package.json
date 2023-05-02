@@ -4,15 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev":"nodemon ./src/main.js",
+    "build":"npm i",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "type": "module",
   "license": "ISC",
-  "script":{
-    "dev":"nodemon ./src/main.js",
-    "build":"npm i"
-  },
   "dependencies": {
     "@aptos-labs/wallet-adapter-react": "^1.0.4",
     "aptos": "^1.8.4",
